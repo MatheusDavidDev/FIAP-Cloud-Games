@@ -1,0 +1,16 @@
+﻿using FCG.Application.Interfaces;
+
+namespace FCG.Infra.Security;
+
+public class HashSenha : IHashSenha
+{
+    public string GerarHash(string senha)
+    {
+        return BCrypt.Net.BCrypt.HashPassword(senha);
+    }
+
+    public bool VerificarHash(string senha, string hash)
+    {
+        return BCrypt.Net.BCrypt.Verify(senha, hash);
+    }
+}
