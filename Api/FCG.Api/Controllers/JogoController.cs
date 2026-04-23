@@ -2,7 +2,6 @@
 using FCG.Application.Commands.JogoCommand.CriarJogo;
 using FCG.Application.Commands.JogoCommand.EditarJogo;
 using FCG.Application.Commands.JogoCommand.ExcluirJogo;
-using FCG.Application.Commands.UsuarioCommand.CriarUsuario;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

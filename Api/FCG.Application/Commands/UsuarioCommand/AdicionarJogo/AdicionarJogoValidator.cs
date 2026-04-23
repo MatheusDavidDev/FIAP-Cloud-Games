@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace FCG.Application.Commands.BibliotecaCommand.AdicionarJogo;
+namespace FCG.Application.Commands.UsuarioCommand.AdicionarJogo;
 
 public class AdicionarJogoValidator : AbstractValidator<AdicionarJogoCommand>   
 {

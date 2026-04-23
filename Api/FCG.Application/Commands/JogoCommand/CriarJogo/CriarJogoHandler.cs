@@ -1,16 +1,31 @@
-﻿using MediatR;
+﻿using FCG.Core.UnitOfWork;
+using FCG.Domain.Entities;
+using MediatR;
 
 namespace FCG.Application.Commands.JogoCommand.CriarJogo;
 
 public class CriarJogoHandler : IRequestHandler<CriarJogoCommand>
 {
-    public CriarJogoHandler()
+    private readonly IUnitOfWork _unitOfWork;
+
+    public CriarJogoHandler(IUnitOfWork unitOfWork)
     {
-        
+        _unitOfWork = unitOfWork;
     }
 
-    public Task Handle(CriarJogoCommand request, CancellationToken cancellationToken)
+    public async Task Handle(CriarJogoCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var jogoRepository = _unitOfWork.GetRepository<Jogo>();
+
+        var jogoExistente = await jogoRepository.GetByAsync(j => j.Nome == request.Nome, cancellationToken);
+        if (jogoExistente is not null)
+            throw new Exception("Jogo já existe.");
+
+        var jogo = new Jogo(request.Nome, request.Preco);
+
+        await jogoRepository.AddAsync(jogo, cancellationToken);
+
+        await _unitOfWork.SaveChanges();
+
     }
 }

@@ -1,0 +1,57 @@
+﻿using FCG.Core.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+
+namespace FCG.Core.Repository;
+
+public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+{
+    protected readonly DbContext DbContext;
+    protected readonly DbSet<TEntity> _dbSet;
+
+    public Repository(DbContext context)
+    {
+        DbContext = context;
+        _dbSet = DbContext.Set<TEntity>();
+    }
+
+    public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        IQueryable<TEntity> query = _dbSet;
+        return await query.ToListAsync(cancellationToken);
+    }
+
+    public Task<TEntity> GetByAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default)
+    {
+        IQueryable<TEntity> query = _dbSet;
+
+        if (predicate is not null)
+        {
+            query = query.Where(predicate);
+        }
+        return query.FirstOrDefaultAsync(cancellationToken);
+    }
+
+    public async Task AddAsync(TEntity entity, CancellationToken cancellationToken)
+    {
+        await _dbSet.AddAsync(entity, cancellationToken);
+    }
+
+    public void Update(TEntity entity)
+    {
+        if (entity is BaseEntity baseEntity)
+        {
+            baseEntity.SetUpdated();
+        }
+
+        _dbSet.Update(entity);
+    }
+
+    public virtual void Remove(TEntity entity)
+    {
+        if (entity is BaseEntity baseEntity)
+        {
+            baseEntity.Delete();
+        }
+    }
+}

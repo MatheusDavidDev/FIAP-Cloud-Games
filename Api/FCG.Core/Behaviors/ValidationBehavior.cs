@@ -1,4 +1,4 @@
-﻿namespace FCG.Application.Behaviors;
+﻿namespace FCG.Core.Behaviors;
 
 using FluentValidation;
 using MediatR;

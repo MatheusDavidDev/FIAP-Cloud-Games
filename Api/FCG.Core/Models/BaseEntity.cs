@@ -1,4 +1,4 @@
-﻿namespace FCG.Domain.Entities;
+﻿namespace FCG.Core.Models;
 
 public abstract class BaseEntity
 {

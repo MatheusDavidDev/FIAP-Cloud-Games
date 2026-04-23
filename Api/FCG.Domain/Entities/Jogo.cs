@@ -1,4 +1,6 @@
-﻿namespace FCG.Domain.Entities;
+﻿using FCG.Core.Models;
+
+namespace FCG.Domain.Entities;
 
 public class Jogo : BaseEntity
 {
@@ -8,6 +10,7 @@ public class Jogo : BaseEntity
         Preco = preco;
     }
 
-    public string Nome { get; set; }
-    public decimal Preco { get; set; }
+    public string Nome { get; private set; }
+    public decimal Preco { get; private set; }
+    public ICollection<JogoBiblioteca> JogoBiblioteca { get; private set; }
 }

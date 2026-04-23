@@ -1,16 +1,19 @@
 using FCG.Api.Middlewares;
-using FCG.Application.Behaviors;
-using FCG.Application.Commands.BibliotecaCommand.AdicionarJogo;
 using FCG.Application.Commands.JogoCommand.CriarJogo;
 using FCG.Application.Commands.JogoCommand.EditarJogo;
 using FCG.Application.Commands.JogoCommand.ExcluirJogo;
+using FCG.Application.Commands.UsuarioCommand.AdicionarJogo;
 using FCG.Application.Commands.UsuarioCommand.CriarUsuario;
 using FCG.Application.Commands.UsuarioCommand.EditarUsuario;
 using FCG.Application.Commands.UsuarioCommand.ExcluirUsuario;
 using FCG.Application.Interfaces;
+using FCG.Core.Behaviors;
+using FCG.Core.UnitOfWork;
+using FCG.Infra;
 using FCG.Infra.Security;
 using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,10 +24,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configuração do DbContext
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<FcgDbContext>(options => options.UseSqlServer(connectionString));
+
+#region DI
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork<FcgDbContext>>();
 builder.Services.AddScoped<IHashSenha, HashSenha>();
-
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-
+#endregion
 
 #region MEDIATR
 //Usuario
