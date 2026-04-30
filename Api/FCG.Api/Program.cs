@@ -1,12 +1,12 @@
 using FCG.Api.Middlewares;
 using FCG.Application.Commands.BibliotecaCommand.AdicionarJogo;
-using FCG.Application.Commands.JogoCommand.CriarJogo;
+using FCG.Application.Commands.JogoCommand.CadastrarJogo;
 using FCG.Application.Commands.JogoCommand.EditarJogo;
 using FCG.Application.Commands.JogoCommand.ExcluirJogo;
-using FCG.Application.Commands.UsuarioCommand.CriarUsuario;
+using FCG.Application.Commands.UsuarioCommand.CadastrarUsuario;
 using FCG.Application.Commands.UsuarioCommand.EditarUsuario;
 using FCG.Application.Commands.UsuarioCommand.ExcluirUsuario;
-using FCG.Application.Commands.UsuarioCommand.LoginCommand;
+using FCG.Application.Commands.UsuarioCommand.Login;
 using FCG.Application.Interfaces.Queries;
 using FCG.Application.Interfaces.Security;
 using FCG.Core.Behaviors;
@@ -50,8 +50,8 @@ builder.Services.AddScoped<IBibliotecaQueryService, BibliotecaQueryService>();
 
 #region MEDIATR
 //Usuario
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CriarUsuarioHandler).Assembly));
-builder.Services.AddValidatorsFromAssembly(typeof(CriarUsuarioValidator).Assembly);
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CadastrarUsuarioHandler).Assembly));
+builder.Services.AddValidatorsFromAssembly(typeof(CadastrarUsuarioValidator).Assembly);
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(EditarUsuarioHandler).Assembly));
 builder.Services.AddValidatorsFromAssembly(typeof(EditarUsuarioValidator).Assembly);
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ExcluirUsuarioHandler).Assembly));
@@ -61,8 +61,8 @@ builder.Services.AddValidatorsFromAssembly(typeof(LoginValidator).Assembly);
 
 
 //Jogo
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CriarJogoHandler).Assembly));
-builder.Services.AddValidatorsFromAssembly(typeof(CriarJogoValidator).Assembly);
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CadastrarJogoHandler).Assembly));
+builder.Services.AddValidatorsFromAssembly(typeof(CadastrarJogoValidator).Assembly);
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(EditarJogoHandler).Assembly));
 builder.Services.AddValidatorsFromAssembly(typeof(EditarJogoValidator).Assembly);
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ExcluirJogoHandler).Assembly));

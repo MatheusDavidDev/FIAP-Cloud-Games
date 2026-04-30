@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace FCG.Application.Commands.UsuarioCommand.LoginCommand;
+namespace FCG.Application.Commands.UsuarioCommand.Login;
 
 public class LoginValidator : AbstractValidator<LoginCommand>
 {

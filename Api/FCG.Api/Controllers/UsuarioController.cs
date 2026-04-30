@@ -1,8 +1,8 @@
 ﻿using FCG.Api.Models.Usuario;
 using FCG.Application.Commands.JogoCommand.ExcluirJogo;
-using FCG.Application.Commands.UsuarioCommand.CriarUsuario;
+using FCG.Application.Commands.UsuarioCommand.CadastrarUsuario;
 using FCG.Application.Commands.UsuarioCommand.EditarUsuario;
-using FCG.Application.Commands.UsuarioCommand.LoginCommand;
+using FCG.Application.Commands.UsuarioCommand.Login;
 using FCG.Application.Interfaces.Queries;
 using FCG.Domain.Enums;
 using MediatR;
@@ -35,7 +35,7 @@ namespace FCG.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Criar(CriarUsuarioModel model)
         {
-            var result = await _mediator.Send(new CriarUsuarioCommand(model.Nome, model.Email, model.Senha));
+            var result = await _mediator.Send(new CadastrarUsuarioCommand(model.Nome, model.Email, model.Senha));
             return Ok(result);
         }
 

@@ -1,11 +1,11 @@
 ﻿using FCG.Domain.Enums;
 using MediatR;
 
-namespace FCG.Application.Commands.UsuarioCommand.CriarUsuario;
+namespace FCG.Application.Commands.UsuarioCommand.CadastrarUsuario;
 
-public class CriarUsuarioCommand : IRequest<Guid>
+public class CadastrarUsuarioCommand : IRequest<Guid>
 {
-    public CriarUsuarioCommand(string nome, string email, string senha)
+    public CadastrarUsuarioCommand(string nome, string email, string senha)
     {
         Nome = nome;
         Email = email;

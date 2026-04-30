@@ -2,18 +2,18 @@
 using FCG.Domain.Entities;
 using MediatR;
 
-namespace FCG.Application.Commands.JogoCommand.CriarJogo;
+namespace FCG.Application.Commands.JogoCommand.CadastrarJogo;
 
-public class CriarJogoHandler : IRequestHandler<CriarJogoCommand>
+public class CadastrarJogoHandler : IRequestHandler<CadastrarJogoCommand>
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    public CriarJogoHandler(IUnitOfWork unitOfWork)
+    public CadastrarJogoHandler(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
 
-    public async Task Handle(CriarJogoCommand request, CancellationToken cancellationToken)
+    public async Task Handle(CadastrarJogoCommand request, CancellationToken cancellationToken)
     {
         var jogoRepository = _unitOfWork.GetRepository<Jogo>();
 

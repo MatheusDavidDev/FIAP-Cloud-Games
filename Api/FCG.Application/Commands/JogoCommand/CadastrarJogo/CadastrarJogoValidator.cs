@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace FCG.Application.Commands.JogoCommand.CriarJogo;
+namespace FCG.Application.Commands.JogoCommand.CadastrarJogo;
 
-public class CriarJogoValidator : AbstractValidator<CriarJogoCommand>
+public class CadastrarJogoValidator : AbstractValidator<CadastrarJogoCommand>
 {
-    public CriarJogoValidator()
+    public CadastrarJogoValidator()
     {
         RuleFor(x => x.Nome)
             .NotEmpty().WithMessage("O nome do jogo é obrigatório.")

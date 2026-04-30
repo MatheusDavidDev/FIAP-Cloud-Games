@@ -1,10 +1,9 @@
 ﻿using FCG.Api.Models.Jogo;
-using FCG.Application.Commands.JogoCommand.CriarJogo;
+using FCG.Application.Commands.JogoCommand.CadastrarJogo;
 using FCG.Application.Commands.JogoCommand.EditarJogo;
 using FCG.Application.Commands.JogoCommand.ExcluirJogo;
 using FCG.Application.Interfaces.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FCG.Api.Controllers;
@@ -26,7 +25,7 @@ public class JogoController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Criar(CriarJogoModel model)
     {
-        await _mediator.Send(new CriarJogoCommand(model.Nome, model.Preco));
+        await _mediator.Send(new CadastrarJogoCommand(model.Nome, model.Preco));
         return Ok();
     }
 

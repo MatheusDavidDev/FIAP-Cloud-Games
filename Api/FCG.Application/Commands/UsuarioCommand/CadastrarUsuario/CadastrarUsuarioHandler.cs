@@ -4,20 +4,20 @@ using FCG.Domain.Entities;
 using FCG.Domain.Enums;
 using MediatR;
 
-namespace FCG.Application.Commands.UsuarioCommand.CriarUsuario;
+namespace FCG.Application.Commands.UsuarioCommand.CadastrarUsuario;
 
-public class CriarUsuarioHandler : IRequestHandler<CriarUsuarioCommand, Guid>
+public class CadastrarUsuarioHandler : IRequestHandler<CadastrarUsuarioCommand, Guid>
 {
     private readonly IHashSenha _hashSenha;
     private readonly IUnitOfWork _unitOfWork;
 
-    public CriarUsuarioHandler(IHashSenha hashSenha, IUnitOfWork unitOfWork)
+    public CadastrarUsuarioHandler(IHashSenha hashSenha, IUnitOfWork unitOfWork)
     {
         _hashSenha = hashSenha;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Guid> Handle(CriarUsuarioCommand request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(CadastrarUsuarioCommand request, CancellationToken cancellationToken)
     {
         var usuarioRepository = _unitOfWork.GetRepository<Usuario>();
 

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace FCG.Application.Commands.UsuarioCommand.LoginCommand;
+namespace FCG.Application.Commands.UsuarioCommand.Login;
 
 public class LoginCommand : IRequest<string>
 {

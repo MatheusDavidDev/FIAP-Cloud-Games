@@ -3,7 +3,7 @@ using FCG.Core.UnitOfWork;
 using FCG.Domain.Entities;
 using MediatR;
 
-namespace FCG.Application.Commands.UsuarioCommand.LoginCommand;
+namespace FCG.Application.Commands.UsuarioCommand.Login;
 
 public class LoginHandler : IRequestHandler<LoginCommand, string>
 {
