@@ -1,4 +1,4 @@
-﻿using FCG.Application.Interfaces;
+﻿using FCG.Application.Interfaces.Security;
 
 namespace FCG.Infra.Security;
 

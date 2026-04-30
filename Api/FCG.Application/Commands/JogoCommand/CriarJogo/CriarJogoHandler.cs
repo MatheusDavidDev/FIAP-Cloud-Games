@@ -17,7 +17,7 @@ public class CriarJogoHandler : IRequestHandler<CriarJogoCommand>
     {
         var jogoRepository = _unitOfWork.GetRepository<Jogo>();
 
-        var jogoExistente = await jogoRepository.GetByAsync(j => j.Nome == request.Nome, cancellationToken);
+        var jogoExistente = await jogoRepository.GetByAsync(predicate: j => j.Nome == request.Nome, cancellationToken: cancellationToken);
         if (jogoExistente is not null)
             throw new Exception("Jogo já existe.");
 

@@ -16,7 +16,7 @@ public class EditarUsuarioHandler : IRequestHandler<EditarUsuarioCommand>
     {
         var usuarioRepository = _unitOfWork.GetRepository<Usuario>();
 
-        var usuario = await usuarioRepository.GetByAsync(x => x.Id == request.IdUsuario, cancellationToken);
+        var usuario = await usuarioRepository.GetByAsync(predicate: x => x.Id == request.IdUsuario, cancellationToken: cancellationToken);
         if (usuario is null)
             throw new Exception("Usuário não encontrado.");
 

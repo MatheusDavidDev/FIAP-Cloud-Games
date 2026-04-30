@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace FCG.Application.Commands.UsuarioCommand.AdicionarJogo;
+namespace FCG.Application.Commands.BibliotecaCommand.AdicionarJogo;
 
 public class AdicionarJogoCommand : IRequest
 {

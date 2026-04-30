@@ -1,10 +1,11 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.EntityFrameworkCore.Query;
+using System.Linq.Expressions;
 
 namespace FCG.Core.Repository
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        Task<TEntity> GetByAsync(Expression<Func<TEntity, bool>>? predicate, CancellationToken cancellationToken);
+        Task<TEntity> GetByAsync(Expression<Func<TEntity, bool>>? predicate = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null, CancellationToken cancellationToken = default);
         Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken = default);
         Task AddAsync(TEntity entity, CancellationToken cancellationToken);
         void Update(TEntity entity);

@@ -1,5 +1,6 @@
 ﻿using FCG.Core.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
 namespace FCG.Core.Repository;
@@ -21,9 +22,17 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
         return await query.ToListAsync(cancellationToken);
     }
 
-    public Task<TEntity> GetByAsync(Expression<Func<TEntity, bool>>? predicate = null, CancellationToken cancellationToken = default)
+    public Task<TEntity> GetByAsync(
+        Expression<Func<TEntity, bool>>? predicate = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, 
+        CancellationToken cancellationToken = default)
     {
         IQueryable<TEntity> query = _dbSet;
+
+        if (include is not null)
+        {
+            query = include(query);
+        }
 
         if (predicate is not null)
         {

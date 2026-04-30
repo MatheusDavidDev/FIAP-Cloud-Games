@@ -1,4 +1,4 @@
-﻿using FCG.Application.Interfaces;
+﻿using FCG.Application.Interfaces.Security;
 using FCG.Core.UnitOfWork;
 using FCG.Domain.Entities;
 using FCG.Domain.Enums;
@@ -21,7 +21,10 @@ public class CriarUsuarioHandler : IRequestHandler<CriarUsuarioCommand, Guid>
     {
         var usuarioRepository = _unitOfWork.GetRepository<Usuario>();
 
-        var usuarioExistente = await usuarioRepository.GetByAsync(u => u.Email == request.Email, cancellationToken);
+        var usuarioExistente = await usuarioRepository.GetByAsync(
+            predicate:u => u.Email == request.Email,
+            cancellationToken: cancellationToken);
+
         if (usuarioExistente != null)
         {
             throw new Exception("Email já cadastrado.");

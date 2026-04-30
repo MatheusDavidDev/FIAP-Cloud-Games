@@ -17,7 +17,7 @@ public class Usuario : BaseEntity
     public string Email { get; private set; }
     public string Senha { get; private set; }
     public TipoUsuario Tipo { get; private set; }
-    public ICollection<JogoBiblioteca> Jogos { get; protected set; }
+    public ICollection<JogoBiblioteca> Jogos { get; protected set; } = new List<JogoBiblioteca>();
 
 
     public void AdicionarJogo(JogoBiblioteca jogoBiblioteca)

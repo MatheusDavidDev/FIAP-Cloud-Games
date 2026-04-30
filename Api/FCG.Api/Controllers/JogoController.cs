@@ -2,20 +2,25 @@
 using FCG.Application.Commands.JogoCommand.CriarJogo;
 using FCG.Application.Commands.JogoCommand.EditarJogo;
 using FCG.Application.Commands.JogoCommand.ExcluirJogo;
+using FCG.Application.Interfaces.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FCG.Api.Controllers;
 
+//[Authorize(Roles = "Admin")]
 [ApiController]
 [Route("[controller]")]
 public class JogoController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly IJogoQueryService _queryService;
 
-    public JogoController(IMediator mediator)
+    public JogoController(IMediator mediator, IJogoQueryService queryService)
     {
         _mediator = mediator;
+        _queryService = queryService;
     }
 
     [HttpPost]
@@ -23,6 +28,20 @@ public class JogoController : ControllerBase
     {
         await _mediator.Send(new CriarJogoCommand(model.Nome, model.Preco));
         return Ok();
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> JogoPorId(Guid id)
+    {
+        var result = await _queryService.ObterJogoPorIdAsync(id, CancellationToken.None);
+        return Ok(result);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> ObterJogoss()
+    {
+        var result = await _queryService.ObterJogoAsync(CancellationToken.None);
+        return Ok(result);
     }
 
     [HttpPut("{id}")]

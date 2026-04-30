@@ -1,4 +1,4 @@
-﻿namespace FCG.Application.Interfaces;
+﻿namespace FCG.Application.Interfaces.Security;
 
 public interface IHashSenha
 {
