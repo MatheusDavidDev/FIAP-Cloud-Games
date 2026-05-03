@@ -13,4 +13,5 @@ public class Jogo : BaseEntity
     public string Nome { get; private set; }
     public decimal Preco { get; private set; }
     public ICollection<JogoBiblioteca> JogoBiblioteca { get; private set; }
+    public ICollection<Promocao> Promocoes { get; private set; }
 }

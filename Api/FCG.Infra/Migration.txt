@@ -1,1 +1,2 @@
 ﻿01 - Add-Migration Init -context FcgDbContext -output Data/Migrations
+02 - Add-Migration Promocao -context FcgDbContext -output Data/Migrations

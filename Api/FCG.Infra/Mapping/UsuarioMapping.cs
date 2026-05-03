@@ -22,7 +22,6 @@ public class UsuarioMapping : IEntityTypeConfiguration<Usuario>
             .IsRequired()
             .HasMaxLength(300);
 
-
         builder.Property(x => x.Tipo)
             .IsRequired()
             .HasConversion<string>();
