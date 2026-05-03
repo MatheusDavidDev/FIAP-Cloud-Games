@@ -1,8 +1,8 @@
 ﻿using FCG.Api.Models.Usuario;
-using FCG.Application.Commands.JogoCommand.ExcluirJogo;
-using FCG.Application.Commands.UsuarioCommand.CadastrarUsuario;
-using FCG.Application.Commands.UsuarioCommand.EditarUsuario;
-using FCG.Application.Commands.UsuarioCommand.Login;
+using FCG.Application.Commands.JogoCommands.ExcluirJogo;
+using FCG.Application.Commands.UsuarioCommands.CadastrarUsuario;
+using FCG.Application.Commands.UsuarioCommands.EditarUsuario;
+using FCG.Application.Commands.UsuarioCommands.Login;
 using FCG.Application.Interfaces.Queries;
 using FCG.Domain.Enums;
 using MediatR;

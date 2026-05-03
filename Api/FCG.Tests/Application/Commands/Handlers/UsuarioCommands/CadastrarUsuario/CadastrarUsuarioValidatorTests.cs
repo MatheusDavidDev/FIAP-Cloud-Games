@@ -1,4 +1,5 @@
 ﻿using FCG.Application.Commands.UsuarioCommand.CadastrarUsuario;
+using FCG.Application.Commands.UsuarioCommands.CadastrarUsuario;
 using FluentValidation.TestHelper;
 
 

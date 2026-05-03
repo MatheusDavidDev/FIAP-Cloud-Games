@@ -16,30 +16,59 @@ public class JogoQueryService : IJogoQueryService
 
     public async Task<JogoDto> ObterJogoPorIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        var jogo = await _context.Jogos.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        var jogo = await _context.Jogos.Include(x => x.Promocoes).FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        
+        var dataAtual = DateTime.Now;
 
-        if (jogo == null)
-            return null;
+        var promocao = jogo.Promocoes.FirstOrDefault(p => p.Ativa &&
+            dataAtual >= p.DataInicio &&
+            dataAtual <= p.DataFim);
+
+
+        var precoFinal = jogo.Preco;
+
+        if (promocao != null)
+            precoFinal -= jogo.Preco * promocao.PercentualDesconto / 100;
 
         return new JogoDto
         {
+
             Id = jogo.Id,
             Nome = jogo.Nome,
-            Preco = jogo.Preco
+            PrecoOriginal = jogo.Preco,
+            PrecoFinal = precoFinal,
+            EmPromocao = promocao != null
         };
     }
 
     public async Task<IEnumerable<JogoDto>> ObterJogoAsync(CancellationToken cancellationToken)
     {
-        var usuarios = await _context.Jogos.ToListAsync(cancellationToken);
-        return usuarios.OrderByDescending(x => x.CreatedAt)
-            .Select(x => new JogoDto
+        var jogos = await _context.Jogos.Include(x => x.Promocoes).ToListAsync(cancellationToken);
+
+        var dataAtual = DateTime.Now;
+
+        return jogos.OrderByDescending(x => x.CreatedAt)
+            .Select(x =>
             {
-                Id = x.Id,
-                Nome = x.Nome,
-                Preco = x.Preco
+                var promocao = x.Promocoes.FirstOrDefault(p => p.Ativa &&
+                    dataAtual >= p.DataInicio &&
+                    dataAtual <= p.DataFim);
+
+
+                var precoFinal = x.Preco;
+
+                if (promocao != null)
+                    precoFinal -= x.Preco * promocao.PercentualDesconto / 100;
+
+                return new JogoDto
+                {
+
+                    Id = x.Id,
+                    Nome = x.Nome,
+                    PrecoOriginal = x.Preco,
+                    PrecoFinal = precoFinal,
+                    EmPromocao = promocao != null
+                };
             });
     }
-
-
 }

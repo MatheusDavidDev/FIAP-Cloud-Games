@@ -1,4 +1,4 @@
-﻿using FCG.Application.Commands.JogoCommand.CadastrarJogo;
+﻿using FCG.Application.Commands.JogoCommands.CadastrarJogo;
 using FluentValidation.TestHelper;
 
 namespace FCG.Tests.Application.Commands.Handlers.JogoCommads.CadastrarJogo;

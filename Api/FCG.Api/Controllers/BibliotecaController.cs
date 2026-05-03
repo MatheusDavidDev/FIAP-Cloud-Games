@@ -1,4 +1,4 @@
-﻿using FCG.Application.Commands.BibliotecaCommand.AdicionarJogo;
+﻿using FCG.Application.Commands.BibliotecaCommands.AdicionarJogo;
 using FCG.Application.Interfaces.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

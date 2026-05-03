@@ -1,12 +1,13 @@
 using FCG.Api.Middlewares;
-using FCG.Application.Commands.BibliotecaCommand.AdicionarJogo;
-using FCG.Application.Commands.JogoCommand.CadastrarJogo;
-using FCG.Application.Commands.JogoCommand.EditarJogo;
-using FCG.Application.Commands.JogoCommand.ExcluirJogo;
-using FCG.Application.Commands.UsuarioCommand.CadastrarUsuario;
-using FCG.Application.Commands.UsuarioCommand.EditarUsuario;
-using FCG.Application.Commands.UsuarioCommand.ExcluirUsuario;
-using FCG.Application.Commands.UsuarioCommand.Login;
+using FCG.Application.Commands.BibliotecaCommands.AdicionarJogo;
+using FCG.Application.Commands.JogoCommands.CadastrarJogo;
+using FCG.Application.Commands.JogoCommands.EditarJogo;
+using FCG.Application.Commands.JogoCommands.ExcluirJogo;
+using FCG.Application.Commands.PromocaoCommands.CriarPromocao;
+using FCG.Application.Commands.UsuarioCommands.CadastrarUsuario;
+using FCG.Application.Commands.UsuarioCommands.EditarUsuario;
+using FCG.Application.Commands.UsuarioCommands.ExcluirUsuario;
+using FCG.Application.Commands.UsuarioCommands.Login;
 using FCG.Application.Interfaces.Queries;
 using FCG.Application.Interfaces.Security;
 using FCG.Core.Behaviors;
@@ -46,6 +47,7 @@ builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBeh
 builder.Services.AddScoped<IUsuarioQueryService, UsuarioQueryService>();
 builder.Services.AddScoped<IJogoQueryService, JogoQueryService>();
 builder.Services.AddScoped<IBibliotecaQueryService, BibliotecaQueryService>();
+builder.Services.AddScoped<IPromocaoQueryService, PromocaoQueryService>();
 #endregion
 
 #region MEDIATR
@@ -71,6 +73,10 @@ builder.Services.AddValidatorsFromAssembly(typeof(ExcluirJogoValidator).Assembly
 //Biblioteca
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(AdicionarJogoHandler).Assembly));
 builder.Services.AddValidatorsFromAssembly(typeof(AdicionarJogoValidator).Assembly);
+
+//Promocao
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CriarPromocaoHandler).Assembly));
+builder.Services.AddValidatorsFromAssembly(typeof(CriarPromocaoValidator).Assembly);
 
 #endregion
 

@@ -1,7 +1,7 @@
 ﻿using FCG.Api.Models.Jogo;
-using FCG.Application.Commands.JogoCommand.CadastrarJogo;
-using FCG.Application.Commands.JogoCommand.EditarJogo;
-using FCG.Application.Commands.JogoCommand.ExcluirJogo;
+using FCG.Application.Commands.JogoCommands.CadastrarJogo;
+using FCG.Application.Commands.JogoCommands.EditarJogo;
+using FCG.Application.Commands.JogoCommands.ExcluirJogo;
 using FCG.Application.Interfaces.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
