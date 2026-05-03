@@ -19,4 +19,9 @@ public class Promocao : BaseEntity
     public DateTime DataInicio { get; private set; }
     public DateTime DataFim { get; private set; }
     public bool Ativa { get; private set; }
+
+    public void DesativarPromocao()
+    {
+        Ativa = false;
+    }
 }

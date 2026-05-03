@@ -14,4 +14,23 @@ public class Jogo : BaseEntity
     public decimal Preco { get; private set; }
     public ICollection<JogoBiblioteca> JogoBiblioteca { get; private set; }
     public ICollection<Promocao> Promocoes { get; private set; }
+
+    public decimal CalcularDesconto(Promocao promocao)
+    {
+        var dataAtual = DateTime.Now;
+
+        if (promocao == null)
+            return Preco;
+
+        if (!promocao.Ativa ||
+            dataAtual < promocao.DataInicio ||
+            dataAtual > promocao.DataFim)
+        {
+            return Preco;
+        }
+
+        return Preco - (Preco * promocao.PercentualDesconto / 100);
+    }
 }
+
+
