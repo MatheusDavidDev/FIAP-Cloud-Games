@@ -4,7 +4,7 @@ using FCG.Core.UnitOfWork;
 using FCG.Domain.Entities;
 using Moq;
 
-namespace FCG.Tests.Application.Commands.Handlers;
+namespace FCG.Tests.Application.Commands.Handlers.JogoCommads.CadastrarJogo;
 
 public class CadastrarJogoHandlerTests
 {

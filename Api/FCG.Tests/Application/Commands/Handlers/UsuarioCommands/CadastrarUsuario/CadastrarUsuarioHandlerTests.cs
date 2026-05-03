@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Query;
 using Moq;
 using System.Linq.Expressions;
 
-namespace FCG.Tests.Application.Commands.Handlers;
+namespace FCG.Tests.Application.Commands.Handlers.UsuarioCommands.CadastrarUsuario;
 
 public class CadastrarUsuarioHandlerTests
 {

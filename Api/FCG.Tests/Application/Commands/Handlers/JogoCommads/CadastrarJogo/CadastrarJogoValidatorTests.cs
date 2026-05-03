@@ -1,7 +1,7 @@
 ﻿using FCG.Application.Commands.JogoCommand.CadastrarJogo;
 using FluentValidation.TestHelper;
 
-namespace FCG.Tests.Application.Commands.Validators;
+namespace FCG.Tests.Application.Commands.Handlers.JogoCommads.CadastrarJogo;
 
 public class CadastrarJogoValidatorTests
 {

@@ -3,7 +3,7 @@ using FluentValidation.TestHelper;
 
 
 
-namespace FCG.Tests.Application.Commands.Validators;
+namespace FCG.Tests.Application.Commands.Handlers.UsuarioCommands.CadastrarUsuario;
 
 public class CadastrarUsuarioValidatorTests
 {
