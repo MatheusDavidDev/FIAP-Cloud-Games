@@ -1,4 +1,4 @@
-﻿using FCG.Application.Commands.JogoCommand.CadastrarJogo;
+﻿using FCG.Application.Commands.JogoCommands.CadastrarJogo;
 using FCG.Core.Repository;
 using FCG.Core.UnitOfWork;
 using FCG.Domain.Entities;

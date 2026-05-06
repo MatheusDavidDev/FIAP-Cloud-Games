@@ -1,10 +1,12 @@
 ﻿using FCG.Application.Commands.BibliotecaCommands.AdicionarJogo;
 using FCG.Application.Interfaces.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FCG.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class BibliotecaController : ControllerBase  
@@ -18,7 +20,6 @@ public class BibliotecaController : ControllerBase
         _queryService = queryService;
     }
 
-    //[Authorize]
     [HttpPost("{id}")]
     public async Task<IActionResult> AdicionarJogo(Guid id, Guid idJogo)
     {

@@ -2,10 +2,12 @@
 using FCG.Application.Commands.PromocaoCommands.CriarPromocao;
 using FCG.Application.Interfaces.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FCG.Api.Controllers;
 
+[Authorize(Roles = "Admin")]
 [ApiController]
 [Route("[controller]")]
 public class PromocaoController : ControllerBase

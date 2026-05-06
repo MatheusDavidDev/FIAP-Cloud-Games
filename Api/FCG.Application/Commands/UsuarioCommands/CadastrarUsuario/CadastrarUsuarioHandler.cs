@@ -34,7 +34,7 @@ public class CadastrarUsuarioHandler : IRequestHandler<CadastrarUsuarioCommand, 
             request.Nome, 
             request.Email,
             _hashSenha.GerarHash(request.Senha), 
-            TipoUsuario.Admin);
+            request.TipoUsuario);
         
         await usuarioRepository.AddAsync(usuario, cancellationToken);
 

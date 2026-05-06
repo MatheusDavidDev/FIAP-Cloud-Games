@@ -1,4 +1,4 @@
-﻿using FCG.Application.Commands.UsuarioCommand.CadastrarUsuario;
+﻿using FCG.Application.Commands.UsuarioCommands.CadastrarUsuario;
 using FCG.Application.Interfaces.Security;
 using FCG.Core.Repository;
 using FCG.Core.UnitOfWork;

@@ -5,15 +5,16 @@ namespace FCG.Application.Commands.UsuarioCommands.CadastrarUsuario;
 
 public class CadastrarUsuarioCommand : IRequest<Guid>
 {
-    public CadastrarUsuarioCommand(string nome, string email, string senha)
+    public CadastrarUsuarioCommand(string nome, string email, int tipoUsuario, string senha)
     {
         Nome = nome;
         Email = email;
         Senha = senha;
+        TipoUsuario = (TipoUsuario)tipoUsuario;
     }
 
     public string Nome { get; set; }
     public string Email { get; set; }
     public string Senha { get; set; }
-    public TipoUsuario Tipo { get; set; }
+    public TipoUsuario TipoUsuario { get; set; }
 }

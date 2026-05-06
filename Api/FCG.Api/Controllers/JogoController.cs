@@ -4,11 +4,12 @@ using FCG.Application.Commands.JogoCommands.EditarJogo;
 using FCG.Application.Commands.JogoCommands.ExcluirJogo;
 using FCG.Application.Interfaces.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FCG.Api.Controllers;
 
-//[Authorize(Roles = "Admin")]
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class JogoController : ControllerBase
@@ -22,6 +23,7 @@ public class JogoController : ControllerBase
         _queryService = queryService;
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> Criar(CriarJogoModel model)
     {
@@ -37,7 +39,7 @@ public class JogoController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> ObterJogoss()
+    public async Task<IActionResult> ObterJogos()
     {
         var result = await _queryService.ObterJogoAsync(CancellationToken.None);
         return Ok(result);
