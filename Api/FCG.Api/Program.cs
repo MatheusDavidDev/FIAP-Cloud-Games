@@ -39,7 +39,7 @@ builder.Services.AddDbContext<FcgDbContext>(options => options.UseSqlServer(conn
 // Configuração do Swagger para JWT
 builder.Services.AddSwaggerGen(x =>
 {
-    x.SwaggerDoc("v1", new OpenApiInfo { Title = "Auth API", Version = "v1" });
+    x.SwaggerDoc("v1", new OpenApiInfo { Title = "Fiap Cloud Games API", Version = "v1" });
 
     x.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
      {
