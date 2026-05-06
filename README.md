@@ -89,7 +89,7 @@ dotnet run --project ./Api/FCG.Api/FCG.Api.csproj
 ```
 ### 3. Acessar a aplicação
 
-Após iniciar o projeto, acesse o Swagger em:
+Após iniciar o projeto, acesse o Swagger em seu navegador:
 
 https://localhost:{porta}/swagger
 
