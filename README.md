@@ -1,22 +1,24 @@
 # Tech Challenge - FIAP Cloud Games
-FIAP Cloud Games será uma plataforma de venda de jogos digitais e gestão de servidores para partidas online. Nesta primeira fase foi desenvolvida uma **API REST** em **.NET 8** para o gerenciamento usuários, jogos, biblioteca e promoções
+FIAP Cloud Games é uma plataforma de venda de jogos digitais e gestão de servidores para partidas online.
+
+Nesta primeira fase, foi desenvolvida uma **API REST** em **.NET 8** responsável pelo gerenciamento de usuários, jogos, biblioteca e promoções.
 
 ## 🚀 Funcionalidades
-👤 **Usuários**
+**👤 Usuários**
 - Cadastro de usuário
 - Listagem de usuários
 - Autenticação com JWT
 - Diferentes níveis de acesso (Usuário e Administrador)
   
-🎮 **Jogos**
+**🎮 Jogos**
 - Cadastro de jogos (Admin)
 - Listagem de jogos
 
- 📚 **Biblioteca**
+**📚 Biblioteca**
 - Adicionar jogos à biblioteca do usuário
 - Listagem de jogos na biblioteca do usuário
   
-💸 **Promoções**
+**💸 Promoções**
 - Criação de promoções (Admin)
 
 ## 🛠️ Tecnologias e Padrões de Projeto
@@ -42,7 +44,7 @@ FIAP Cloud Games será uma plataforma de venda de jogos digitais e gestão de se
 - **Repository Pattern** (Abstração do acesso a dados)
 - **Unit of Work** (Garantir a consistência nas operações de escrita)
 
-# 🧩 Estrutura da aplicação
+## 🏗️ Estrutura da aplicação
 
 O projeto está organizado em camadas, seguindo princípios de separação de responsabilidades:
 
@@ -56,7 +58,7 @@ O projeto está organizado em camadas, seguindo princípios de separação de re
 
 **FCG.Core**
 - Camada de abstrações e componentes compartilhados.
-  - Contém interface do repositório, Unit of Work, behaviors e modelBase.
+  - Contém interface do repositório, Unit of Work, behaviors e BaseEntity.
 
 **FCG.Domain**
 - Camada de domínio.
@@ -64,7 +66,7 @@ O projeto está organizado em camadas, seguindo princípios de separação de re
 
 **FCG.Infra**
 - Camada de infraestrutura.
-   - Responsável pela persistência de dados, implementação de repositórios, querys e integrações externas.
+   - Responsável pela persistência de dados, implementação de repositórios, queries e integrações externas.
 
 **FCG.Tests**
 - Projeto de testes.
@@ -73,18 +75,18 @@ O projeto está organizado em camadas, seguindo princípios de separação de re
 ## ▶️ Como executar a aplicação
 ### Pré-requisitos
 - .NET 8 SDK instalado
-- Docker  instalado
+- Docker instalado
 
 ### 1. Subir o banco de dados
-Na raiz do projeto (onde está a pasta Docker):
-
+Na raiz do projeto:
+```bash
 docker-compose -f Docker/docker-compose.yml up -d
-
+```
 ### 2. Rodar a API
-Na raiz do projeto (onde está a pasta Api):
-
+Na raiz do projeto:
+```bash
 dotnet run --project ./Api/FCG.Api/FCG.Api.csproj
-
+```
 ### 3. Acessar a aplicação
 
 Após iniciar o projeto, acesse o Swagger em:
@@ -93,5 +95,7 @@ https://localhost:{porta}/swagger
 
 > A porta será exibida no terminal ao executar o projeto.
 
-### Observação
-As migrations são aplicadas automaticamente ao iniciar a aplicação, não é necessário executar comandos de banco manualmente
+### Observações
+- Certifique-se de que o Docker esteja em execução antes de iniciar o banco de dados.
+- As migrations são aplicadas automaticamente ao iniciar a aplicação, não é necessário executar comandos de banco manualmente.
+
